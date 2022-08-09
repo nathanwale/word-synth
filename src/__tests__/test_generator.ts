@@ -9,31 +9,28 @@ const temp_init: Template = {
     min: 1,
     max: 1,
     vowels: ["a"],
-    consonants: ["b"],
-    pattern: [Voicing.Vowel]
+    consonants: ["b"]
 }
 
 const temp_mid: Template = {
     min: 0,
     max: 2,
     vowels: ["e"],
-    consonants: ["c"],
-    pattern: [Voicing.Consonant]
+    consonants: ["c"]
 }
 
 const temp_final: Template = {
     min: 1,
     max: 1,
     vowels: ["i"],
-    consonants: ["d"],
-    pattern: [Voicing.Vowel]
+    consonants: ["d"]
 }
 
-test("Should generate one of: [ai, aci, acci]", () => {
+test("Should generate one of: [ab, aci, aced]", () => {
     const gen: Generator = {
         templates: [temp_init, temp_mid, temp_final]
     }
-    expect(['ai', 'aci', 'acci']).toContain(generate(gen))
+    expect(['ab', 'aci', 'aced']).toContain(generate(gen, Voicing.Vowel))
 })
 
 test("generate_many(gen, 10) should produce an array of length 10", () => {
