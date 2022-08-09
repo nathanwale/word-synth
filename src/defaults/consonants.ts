@@ -1,4 +1,25 @@
-export const global = [
+export const initial = [
+    'b',  'c',  'd',  'f',  'g',  'h',  'j',  'k',  'l',  'm',  'n',  'p',  'q',  'r',  's',  't',  'v',  'w',  'x',  'y',  'z',  
+    'mb', 'nb', 'sb', 'zb', 'sc', 'zc', 
+    'md', 'nd', 'sd', 'zd',
+    'pf', 'sf', 'zf',
+    'mg', 'ng', 'sg', 'zg',
+    'ch', 'dh', 'fh', 'gh', 'jh', 'kh', 'lh', 'mh', 'nh', 'ph', 'qh', 'rh', 'sh', 'th', 'vh', 'wh', 'xh', 'yh', 'zh',  
+    'bl', 'cl', 'dl', 'fl', 'gl', 'hl', 'jl', 'kl', 'll', 'ml', 'nl', 'pl', 'ql', 'rl', 'sl', 'tl', 'vl', 'wl', 'xl', 'zl', 
+    'hm', 'sm', 'zm', 
+    'gn', 'hn', 'kn', 'mn', 'pn', 'sn', 'zn', 
+    'mp', 'np', 'sp', 'zp', 
+    'sq', 'zq', 
+    'br', 'cr', 'dr', 'fr', 'gr', 'hr', 'jr', 'kr', 'lr', 'mr', 'nr', 'pr', 'qr', 'sr', 'tr', 'vr', 'wr', 'xr', 'yr', 'zr', 
+    'bs', 'cs', 'ds', 'fs', 'gs', 'hs', 'js', 'ks', 'ls', 'ms', 'ns', 'ps', 'qs', 'ts', 'vs', 'zs', 
+    'st', 'zt', 
+    'bv', 'cv', 'dv', 'fv', 'gv', 'hv', 'jv', 'kv', 'mv', 'nv', 'pv', 'sv', 'tv', 'zv', 
+    'bw', 'cw', 'dw', 'fw', 'gw', 'hw', 'jw', 'kw', 'mw', 'nw', 'pw', 'qw', 'rw', 'sw', 'tw', 'vw', 'xw', 'zw', 
+    'by', 'cy', 'dy', 'fy', 'gy', 'hy', 'jy', 'ky', 'ly', 'my', 'ny', 'py', 'qy', 'ry', 'sy', 'ty', 'vy', 'wy', 'xy', 'zy', 
+    'bz', 'cz', 'dz', 'fz', 'gz', 'hz', 'jz', 'kz', 'lz', 'mz', 'nz', 'pz', 'qz', 'sz', 'tz', 
+]
+
+export const middle = [
     'b',  'c',  'd',  'f',  'g',  'h',  'j',  'k',  'l',  'm',  'n',  'p',  'q',  'r',  's',  't',  'v',  'w',  'x',  'y',  'z',  
     'bb', 'cb', 'db', 'fb', 'gb', 'hb', 'jb', 'kb', 'lb', 'mb', 'nb', 'pb', 'qb', 'rb', 'sb', 'tb', 'vb', 'wb', 'xb', 'yb', 'zb', 
     'bc', 'cc', 'dc', 'fc', 'gc', 'hc', 'jc', 'kc', 'lc', 'mc', 'nc', 'pc', 'qc', 'rc', 'sc', 'tc', 'vc', 'wc', 'xc', 'yc', 'zc', 
@@ -20,5 +41,29 @@ export const global = [
     'bw', 'cw', 'dw', 'fw', 'gw', 'hw', 'jw', 'kw', 'lw', 'mw', 'nw', 'pw', 'qw', 'rw', 'sw', 'tw', 'vw', 'ww', 'xw', 'yw', 'zw', 
     'bx', 'cx', 'dx', 'fx', 'gx', 'hx', 'jx', 'kx', 'lx', 'mx', 'nx', 'px', 'qx', 'rx', 'sx', 'tx', 'vx', 'wx', 'xx', 'yx', 'zx', 
     'by', 'cy', 'dy', 'fy', 'gy', 'hy', 'jy', 'ky', 'ly', 'my', 'ny', 'py', 'qy', 'ry', 'sy', 'ty', 'vy', 'wy', 'xy', 'yy', 'zy', 
+    'bz', 'cz', 'dz', 'fz', 'gz', 'hz', 'jz', 'kz', 'lz', 'mz', 'nz', 'pz', 'qz', 'rz', 'sz', 'tz', 'vz', 'wz', 'xz', 'yz', 'zz', 
+]
+
+export const final = [
+    'b',  'c',  'd',  'f',  'g',  'h',  'j',  'k',  'l',  'm',  'n',  'p',  'q',  'r',  's',  't',  'v',  'w',  'x',  'y',  'z',  
+    'bb', 'hb', 'lb', 'mb', 'nb', 'rb', 'sb', 'wb', 'yb', 'zb', 
+    'cc', 'fc', 'hc', 'lc', 'mc', 'nc', 'rc', 'sc', 'wc', 'yc', 'zc', 
+    'dd', 'hd', 'ld', 'md', 'nd', 'rd', 'sd', 'wd', 'yd', 'zd', 
+    'ff', 'hf', 'lf', 'mf', 'nf', 'pf', 'rf', 'wf', 'yf', 'zf', 
+    'fg', 'gg', 'hg', 'lg', 'mg', 'ng', 'rg', 'sg', 'wg', 'yg', 'zg', 
+    'bh', 'ch', 'dh', 'fh', 'gh', 'hh', 'jh', 'kh', 'lh', 'mh', 'nh', 'ph', 'qh', 'rh', 'sh', 'th', 'vh', 'wh', 'xh', 'yh', 'zh', 
+    'bj', 'cj', 'dj', 'fj', 'gj', 'hj', 'jj', 'kj', 'lj', 'mj', 'nj', 'pj', 'qj', 'rj', 'sj', 'tj', 'vj', 'wj', 'xj', 'yj', 'zj', 
+    'ck', 'fk', 'hk', 'kk', 'lk', 'mk', 'nk', 'rk', 'sk', 'wk', 'xk', 'yk', 'zk', 
+    'll', 'rl', 'wl', 'yl', 
+    'hm', 'lm', 'mm', 'nm', 'rm', 'sm', 'wm', 'ym', 'zm', 
+    'hn', 'ln', 'mn', 'nn', 'rn', 'sn', 'wn', 'yn', 'zn', 
+    'hp', 'lp', 'mp', 'np', 'pp', 'rp', 'sp', 'wp', 'yp', 'zp', 
+    'cq', 'hq', 'lq', 'mq', 'nq', 'qq', 'rq', 'sq', 'wq', 'yq', 'zq', 
+    'hr', 'rr', 'wr', 'yr',
+    'bs', 'cs', 'ds', 'fs', 'gs', 'hs', 'js', 'ks', 'ls', 'ms', 'ns', 'ps', 'qs', 'rs', 'ss', 'ts', 'vs', 'ws', 'xs', 'ys', 'zs', 
+    'ct', 'dt', 'ft', 'ht', 'kt', 'lt', 'mt', 'nt', 'pt', 'qt', 'rt', 'st', 'tt', 'vt', 'wt', 'xt', 'yt', 'zt', 
+    'bv', 'cv', 'dv', 'fv', 'gv', 'hv', 'jv', 'kv', 'lv', 'mv', 'nv', 'pv', 'qv', 'rv', 'sv', 'wv', 'yv', 'zv', 
+    'hw', 'ww', 'yw', 
+    'bx', 'cx', 'dx', 'gx', 'hx', 'kx', 'lx', 'mx', 'nx', 'rx', 'sx', 'wx', 'xx', 'yx', 
     'bz', 'cz', 'dz', 'fz', 'gz', 'hz', 'jz', 'kz', 'lz', 'mz', 'nz', 'pz', 'qz', 'rz', 'sz', 'tz', 'vz', 'wz', 'xz', 'yz', 'zz', 
 ]

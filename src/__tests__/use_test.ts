@@ -8,31 +8,28 @@ import * as Random from '../random'
 
 
 const lang_vowels = Random.take(Vowels.global, 10)
-const lang_consonants = Random.take(Consonants.global, 20)
+
 
 
 const temp_init: Template = {
     min: 1,
     max: 1,
     vowels: Random.take(lang_vowels, 7),
-    consonants: Random.take(lang_consonants, 15),
-    pattern: [Voicing.Vowel, Voicing.Consonant]
+    consonants: Random.take(Consonants.initial, 15)
 }
 
 const temp_mid: Template = {
     min: 0,
     max: 2,
     vowels: Random.take(lang_vowels, 7),
-    consonants: Random.take(lang_consonants, 15),
-    pattern: [Voicing.Vowel, Voicing.Consonant]
+    consonants: Random.take(Consonants.middle, 15)
 }
 
 const temp_final: Template = {
     min: 1,
     max: 1,
     vowels: Random.take(lang_vowels, 7),
-    consonants: Random.take(lang_consonants, 15),
-    pattern: [Voicing.Vowel, Voicing.Consonant]
+    consonants: Random.take(Consonants.final, 15)
 }
 
 const generator: Generator.Generator = {
@@ -40,6 +37,6 @@ const generator: Generator.Generator = {
 }
 
 test("Generator doesn't produce empty strings", () => {
-    const word = Generator.generate(generator)
+    const word = Generator.generate(generator, Voicing.Vowel)
     expect(word).not.toEqual("")
 })
