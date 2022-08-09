@@ -6,12 +6,13 @@ type GeneratedWordsProps = {
 }
 
 type WordListProps = {
-    words: string[]
+    words: string[],
+    wordcount: number
 }
 
 function WordList(props: WordListProps)
 {
-    const list = props.words.map((w) => <li key={w}> { w } </li>)
+    const list = props.words.slice(0, props.wordcount).map((w, i) => <li key={w+'-'+i}> { w } </li>)
     return (
         <ol>
             { list }
@@ -22,24 +23,30 @@ function WordList(props: WordListProps)
 export function GeneratedWords(props: GeneratedWordsProps)
 {
     let [wordcount, set_wordcount] = React.useState(10)
-    let [words, set_words] = React.useState([""])
+    let [words, set_words] = React.useState(new_words())
 
     function update_wordcount(event: React.ChangeEvent<HTMLInputElement>) {
-        set_wordcount((_prev) => parseInt(event.target.value));
+        set_wordcount(parseInt(event.target.value));
     }
 
-    React.useEffect(() => {
-        set_words(Generator.generate_many(props.generator, wordcount))
-    }, [props.generator, wordcount])
+    function update_words() {
+        set_words(new_words())
+    }
+
+    function new_words() {
+        return Generator.generate_many(props.generator, 100)
+    }
+
 
     return (
         <div className='generated-words'>
             <p>Generate <strong>{wordcount}</strong> words</p>
+            <button onClick={ update_words }>Regenerate</button>
             <input 
                 type='range' min='1' max='50' 
                 value={ wordcount }
                 onChange={ update_wordcount } />
-            <WordList words={ words } />
+            <WordList words={ words } wordcount = { wordcount } />
         </div>
     )
 }
