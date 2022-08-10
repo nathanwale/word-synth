@@ -2,12 +2,12 @@ import * as Vowels from '../defaults/vowels'
 import * as Consonants from '../defaults/consonants'
 import * as Generator from '../models/Generator'
 import { Template } from '../models/Template'
-import { Voicing } from '../models/Voicing'
 import * as Random from '../random'
 
 import React from 'react';
 import { GeneratedWords } from './GeneratedWords';
 import './style/App.css';
+import { WordSection } from './WordSection'
 
 const lang_vowels = Random.take(Vowels.global, 10)
 
@@ -39,9 +39,23 @@ function App()
     }
     return (
         <div className="App">
-            <header className="App-header">
+            <header className="nameplate">
                 WordSynth
             </header>
+            <div className='phonemes'>
+                <WordSection 
+                    title='Initial' 
+                    vowels={ temp_init.vowels }
+                    consonants={ temp_init.consonants } />
+                <WordSection 
+                    title='Middle' 
+                    vowels={ temp_mid.vowels }
+                    consonants={ temp_mid.consonants } />
+                <WordSection 
+                    title='Final' 
+                    vowels={ temp_final.vowels }
+                    consonants={ temp_final.consonants } />
+            </div>
             <GeneratedWords generator={ generator } />
         </div>
     );
