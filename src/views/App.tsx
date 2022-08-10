@@ -6,7 +6,7 @@ import * as Random from '../random'
 
 import React from 'react';
 import { GeneratedWords } from './GeneratedWords';
-import './style/App.css';
+import './style/App.scss';
 import { WordSection } from './WordSection'
 
 const lang_vowels = Random.take(Vowels.global, 10)
