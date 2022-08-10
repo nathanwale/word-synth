@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
+header.nameplate {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    padding-top: 1em;
+    padding-bottom: .1em;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+div.phonemes {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    background-color: #aaa;
+    padding: .1em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+div.word-section {
+    width: 100%;
+    margin: 1em;
+    background-color: #ddd;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 2em auto;
+    grid-template-areas: 
+        "title  title"
+        "vowels consonants";
+    border-radius: 0.5em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+div.word-section header {
+    grid-area: title;
+    text-align: center;
+    font-weight: 900;
+    background-color: #333;
+    color: white;
+    padding-top: 0.7em;
 }
 
-.App-link {
-  color: #61dafb;
+div.phoneme-pool {
+    padding: .5em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+div.phoneme-pool header {
+    background-color: transparent;
+    color: #666;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.8em;
 }
+
+div.phoneme-pool .buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.phoneme-pool button {
+    margin: .1em;
+    padding: .25em .5em;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: .25em;
+}
+
+div.phoneme-pool:nth-child(0) {
+    grid-area: vowels;
+}
+
+div.phoneme-pool:nth-child(1) {
+    grid-area: consonants;
+}
+
+div.phoneme-pool:nth-child(1) .buttons {
+    justify-content: flex-end;
+}
+
+
