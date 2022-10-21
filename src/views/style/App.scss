@@ -7,6 +7,66 @@ header.nameplate {
     padding-bottom: .1em;
 }
 
+div.language-pool {
+    display: flex;
+    gap: 1em;
+    background-color: #ddd;
+    padding: .1em;
+
+    header {
+        background-color: #333;
+        color: white;
+        font-weight: bold;
+        padding: 0.5em 1em 0.5em 2em;
+        margin: 0.25em 0.25em 0.25em -1em;
+        text-align: right;
+        border-radius: 0 0.5em 0.5em 0;
+    }
+
+    .phoneme-pool {
+        header {
+            background-color: transparent;
+            color: #666;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            padding: 0;
+            margin: 0;
+        }
+
+        button.toggle-display {
+            background-color: #eee;
+            border: 1px solid #666;
+            border-radius: 100%;
+            color: #333;
+            font-weight: bolder;
+            font-size: 0.8em;
+        }
+    }
+}
+
+div.phoneme-selector {
+    border: 2px solid #333;
+    border-radius: 0.5em;
+    background-color: #fff;
+    padding: 1em;
+    position: absolute;
+    max-width: 20em;
+
+    .phoneme-toggle {
+        margin: 0.25em;
+        border: 1px solid #666;
+        border-bottom-width: 0.5em;
+        border-radius: 0.25em;
+    }
+
+    .selected {
+        background-color: rgb(27, 144, 60);
+        border-color: rgb(17, 106, 42);
+        color: white;
+    }
+}
+
 div.phonemes {
     width: 100%;
     display: flex;
@@ -34,34 +94,49 @@ div.phonemes {
             color: white;
             padding-top: 0.7em;
         }
-    }
 
-    .phoneme-pool {
-        padding: .5em;
-
-        header {
-            background-color: transparent;
-            color: #666;
-            text-align: left;
-            text-transform: uppercase;
-            font-size: 0.8em;
-        }
-
-        .buttons {
-            display: flex;
-            flex-wrap: wrap;
-
-            button {
-                margin: .1em;
-                padding: .25em .5em;
-                background-color: #333;
-                color: white;
-                border: none;
-                border-radius: .25em;
+        .phoneme-pool {
+            header {
+                background-color: transparent;
+                color: #666;
+                text-align: left;
+                text-transform: uppercase;
+                font-size: 0.8em;
             }
         }
     }
+
 }
 
 
 
+.phoneme-pool {
+    padding: .5em;
+
+    .buttons {
+        display: flex;
+        flex-wrap: wrap;
+
+        button {
+            margin: .1em;
+            padding: .25em .5em;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: .25em;
+        }
+    }
+}
+
+.generated-words {
+    text-align: center;
+    li {
+        list-style: none;
+        display: inline-block;
+        padding: 0.25em 0.5em;
+        margin: 0.25em 0.5em;
+        border: 1px solid #666;
+        background-color: #eee;
+        border-radius: 0.5em; 
+    }
+}
