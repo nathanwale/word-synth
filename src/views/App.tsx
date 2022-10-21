@@ -8,6 +8,7 @@ import React from 'react';
 import { GeneratedWords } from './GeneratedWords';
 import './style/App.scss';
 import { WordSection } from './WordSection'
+import { LanguagePool } from './LanguagePool'
 
 const simple_vowels = Random.take(Vowels.simple, 5)
 const complex_vowels = Random.take(Vowels.complex, 5)
@@ -48,6 +49,11 @@ function App()
             <header className="nameplate">
                 WordSynth
             </header>
+            <LanguagePool
+                simple_vowels={ simple_vowels }
+                complex_vowels={ complex_vowels }
+                simple_consonants={ simple_consonants}
+                complex_consonants={ complex_consonants} />
             <div className='phonemes'>
                 <WordSection 
                     title='Initial' 
