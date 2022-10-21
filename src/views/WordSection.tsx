@@ -13,8 +13,14 @@ export function WordSection(props: WordSectionProps)
     return (
         <div className='word-section'>
             <header>{ props.title }</header>
-            <PhonemePool title='Vowels' phonemes={ props.vowels } />
-            <PhonemePool title='Consonants' phonemes={ props.consonants } />
+            <PhonemePool 
+                title='Vowels' 
+                available_phonemes={ props.vowels } 
+                selected_phonemes={ props.vowels } />
+            <PhonemePool 
+                title='Consonants' 
+                available_phonemes={ props.consonants } 
+                selected_phonemes={ props.consonants } />
         </div>
     )
 }
