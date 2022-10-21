@@ -68,7 +68,7 @@ function App()
                     vowels={ temp_final.vowels }
                     consonants={ temp_final.consonants } />
             </div>
-            <GeneratedWords generator={ generator } />
+            <GeneratedWords generator={ generator } wordcount={ 100 } />
         </div>
     );
 }
