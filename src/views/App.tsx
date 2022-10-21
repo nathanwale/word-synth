@@ -9,7 +9,13 @@ import { GeneratedWords } from './GeneratedWords';
 import './style/App.scss';
 import { WordSection } from './WordSection'
 
-const lang_vowels = Random.take(Vowels.global, 10)
+const simple_vowels = Random.take(Vowels.simple, 5)
+const complex_vowels = Random.take(Vowels.complex, 5)
+const lang_vowels = simple_vowels.concat(complex_vowels)
+
+const simple_consonants = Random.take(Consonants.simple, 5)
+const complex_consonants = Random.take(Consonants.complex, 5)
+const lang_consonants = simple_consonants.concat(complex_vowels)
 
 const temp_init: Template = {
     min: 1,
@@ -22,7 +28,7 @@ const temp_mid: Template = {
     min: 0,
     max: 2,
     vowels: Random.take(lang_vowels, 7),
-    consonants: Random.take(Consonants.middle, 15)
+    consonants: Random.take(Consonants.complex, 15)
 }
 
 const temp_final: Template = {

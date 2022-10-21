@@ -1,16 +1,18 @@
-export const global = [
+export const simple = [
     'a', 
     'e',
     'i',
     'o',
     'u',
-    'e',
     'y',
-    'ea',
-    'ee',
-    'ei',
-    'eo',
-    'eu',
+]
+
+export const complex = [
+    'aa',
+    'ae',
+    'ai',
+    'ao',
+    'au',
     'ea',
     'ee',
     'ei',

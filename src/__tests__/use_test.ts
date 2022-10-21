@@ -7,7 +7,7 @@ import { Voicing } from '../models/Voicing'
 import * as Random from '../random'
 
 
-const lang_vowels = Random.take(Vowels.global, 10)
+const lang_vowels = Random.take(Vowels.simple, 10)
 
 
 
@@ -22,7 +22,7 @@ const temp_mid: Template = {
     min: 0,
     max: 2,
     vowels: Random.take(lang_vowels, 7),
-    consonants: Random.take(Consonants.middle, 15)
+    consonants: Random.take(Consonants.complex, 15)
 }
 
 const temp_final: Template = {

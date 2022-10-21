@@ -1,26 +1,28 @@
-export const initial = [
+export const simple = [
     'b',  'c',  'd',  'f',  'g',  'h',  'j',  'k',  'l',  'm',  'n',  'p',  'q',  'r',  's',  't',  'v',  'w',  'x',  'y',  'z',  
-    'mb', 'nb', 'sb', 'zb', 'sc', 'zc', 
+]
+
+export const initial = [
+    'mb', 'nb', 'sb', 'zb', 'sc', 'zc',
     'md', 'nd', 'sd', 'zd',
     'pf', 'sf', 'zf',
     'mg', 'ng', 'sg', 'zg',
-    'ch', 'dh', 'fh', 'gh', 'jh', 'kh', 'lh', 'mh', 'nh', 'ph', 'qh', 'rh', 'sh', 'th', 'vh', 'wh', 'xh', 'yh', 'zh',  
-    'bl', 'cl', 'dl', 'fl', 'gl', 'hl', 'jl', 'kl', 'll', 'ml', 'nl', 'pl', 'ql', 'rl', 'sl', 'tl', 'vl', 'wl', 'xl', 'zl', 
-    'hm', 'sm', 'zm', 
-    'gn', 'hn', 'kn', 'mn', 'pn', 'sn', 'zn', 
-    'mp', 'np', 'sp', 'zp', 
-    'sq', 'zq', 
-    'br', 'cr', 'dr', 'fr', 'gr', 'hr', 'jr', 'kr', 'lr', 'mr', 'nr', 'pr', 'qr', 'sr', 'tr', 'vr', 'wr', 'xr', 'yr', 'zr', 
-    'bs', 'cs', 'ds', 'fs', 'gs', 'hs', 'js', 'ks', 'ls', 'ms', 'ns', 'ps', 'qs', 'ts', 'vs', 'zs', 
-    'st', 'zt', 
-    'bv', 'cv', 'dv', 'fv', 'gv', 'hv', 'jv', 'kv', 'mv', 'nv', 'pv', 'sv', 'tv', 'zv', 
-    'bw', 'cw', 'dw', 'fw', 'gw', 'hw', 'jw', 'kw', 'mw', 'nw', 'pw', 'qw', 'rw', 'sw', 'tw', 'vw', 'xw', 'zw', 
-    'by', 'cy', 'dy', 'fy', 'gy', 'hy', 'jy', 'ky', 'ly', 'my', 'ny', 'py', 'qy', 'ry', 'sy', 'ty', 'vy', 'wy', 'xy', 'zy', 
-    'bz', 'cz', 'dz', 'fz', 'gz', 'hz', 'jz', 'kz', 'lz', 'mz', 'nz', 'pz', 'qz', 'sz', 'tz', 
+    'ch', 'dh', 'fh', 'gh', 'jh', 'kh', 'lh', 'mh', 'nh', 'ph', 'qh', 'rh', 'sh', 'th', 'vh', 'wh', 'xh', 'yh', 'zh',
+    'bl', 'cl', 'dl', 'fl', 'gl', 'hl', 'jl', 'kl', 'll', 'ml', 'nl', 'pl', 'ql', 'rl', 'sl', 'tl', 'vl', 'xl', 'zl',
+    'hm', 'sm', 'zm',
+    'gn', 'hn', 'kn', 'mn', 'pn', 'sn', 'zn',
+    'mp', 'np', 'sp', 'zp',
+    'sq', 'zq',
+    'br', 'cr', 'dr', 'fr', 'gr', 'hr', 'jr', 'kr', 'lr', 'mr', 'nr', 'pr', 'qr', 'sr', 'tr', 'vr', 'wr', 'xr', 'yr', 'zr',
+    'bs', 'cs', 'ds', 'fs', 'gs', 'hs', 'js', 'ks', 'ls', 'ms', 'ns', 'ps', 'qs', 'ts', 'vs', 'zs',
+    'st', 'zt',
+    'bv', 'cv', 'dv', 'fv', 'gv', 'hv', 'jv', 'kv', 'mv', 'nv', 'pv', 'sv', 'tv', 'zv',
+    'bw', 'cw', 'dw', 'fw', 'gw', 'hw', 'jw', 'kw', 'mw', 'nw', 'pw', 'qw', 'rw', 'sw', 'tw', 'vw', 'xw', 'zw',
+    'by', 'cy', 'dy', 'fy', 'gy', 'hy', 'jy', 'ky', 'ly', 'my', 'ny', 'py', 'qy', 'ry', 'sy', 'ty', 'vy', 'wy', 'xy', 'zy',
+    'bz', 'cz', 'dz', 'fz', 'gz', 'hz', 'jz', 'kz', 'lz', 'mz', 'nz', 'pz', 'qz', 'sz', 'tz',
 ]
 
-export const middle = [
-    'b',  'c',  'd',  'f',  'g',  'h',  'j',  'k',  'l',  'm',  'n',  'p',  'q',  'r',  's',  't',  'v',  'w',  'x',  'y',  'z',  
+export const complex = [
     'bb', 'cb', 'db', 'fb', 'gb', 'hb', 'jb', 'kb', 'lb', 'mb', 'nb', 'pb', 'qb', 'rb', 'sb', 'tb', 'vb', 'wb', 'xb', 'yb', 'zb', 
     'bc', 'cc', 'dc', 'fc', 'gc', 'hc', 'jc', 'kc', 'lc', 'mc', 'nc', 'pc', 'qc', 'rc', 'sc', 'tc', 'vc', 'wc', 'xc', 'yc', 'zc', 
     'bd', 'cd', 'dd', 'fd', 'gd', 'hd', 'jd', 'kd', 'ld', 'md', 'nd', 'pd', 'qd', 'rd', 'sd', 'td', 'vd', 'wd', 'xd', 'yd', 'zd', 
@@ -45,7 +47,6 @@ export const middle = [
 ]
 
 export const final = [
-    'b',  'c',  'd',  'f',  'g',  'h',  'j',  'k',  'l',  'm',  'n',  'p',  'q',  'r',  's',  't',  'v',  'w',  'x',  'y',  'z',  
     'bb', 'hb', 'lb', 'mb', 'nb', 'rb', 'sb', 'wb', 'yb', 'zb', 
     'cc', 'fc', 'hc', 'lc', 'mc', 'nc', 'rc', 'sc', 'wc', 'yc', 'zc', 
     'dd', 'hd', 'ld', 'md', 'nd', 'rd', 'sd', 'wd', 'yd', 'zd', 
