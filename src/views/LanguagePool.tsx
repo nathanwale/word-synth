@@ -1,9 +1,6 @@
 import React from 'react';
-import * as Vowels from '../defaults/vowels';
-import * as Consonants from '../defaults/consonants';
-import { Phoneme } from '../models/Phoneme';
 import { PhonemePool } from './PhonemePool';
-import { PhonemeSelector, PhonemeSelection } from './PhonemeSelector';
+import { PhonemeSelection } from './PhonemeSelector';
 
 export type LanguagePoolProps = {
     simple_vowels: PhonemeSelection[],
