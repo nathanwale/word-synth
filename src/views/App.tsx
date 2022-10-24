@@ -9,6 +9,16 @@ import { GeneratedWords } from './GeneratedWords';
 import './style/App.scss';
 import { WordSection } from './WordSection'
 import { LanguagePool } from './LanguagePool'
+import { Phoneme } from '../models/Phoneme'
+import { PhonemeSelection } from './PhonemeSelector'
+
+function create_phoneme_selections(all: Phoneme[], selected: Phoneme[]): PhonemeSelection[]
+{
+    return all.map((ph) => ({
+        phoneme: ph,
+        selected: selected.includes(ph),
+    }))
+}
 
 const simple_vowels = Random.take(Vowels.simple, 5)
 const complex_vowels = Random.take(Vowels.complex, 5)
@@ -29,7 +39,7 @@ const temp_mid: Template = {
     min: 0,
     max: 2,
     vowels: Random.take(lang_vowels, 7),
-    consonants: Random.take(Consonants.complex, 15)
+    consonants: Random.take(lang_consonants, 15)
 }
 
 const temp_final: Template = {
@@ -50,23 +60,23 @@ function App()
                 WordSynth
             </header>
             <LanguagePool
-                simple_vowels={ simple_vowels }
-                complex_vowels={ complex_vowels }
-                simple_consonants={ simple_consonants}
-                complex_consonants={ complex_consonants} />
+                simple_vowels={ create_phoneme_selections(Vowels.simple, simple_vowels) }
+                complex_vowels={ create_phoneme_selections(Vowels.complex, complex_vowels) }
+                simple_consonants={ create_phoneme_selections(Consonants.simple, simple_consonants) }
+                complex_consonants={ create_phoneme_selections(Consonants.complex, complex_consonants) } />
             <div className='phonemes'>
                 <WordSection 
                     title='Initial' 
-                    vowels={ temp_init.vowels }
-                    consonants={ temp_init.consonants } />
+                    vowels={ create_phoneme_selections(temp_init.vowels, lang_vowels) }
+                    consonants={ create_phoneme_selections(temp_init.consonants, Consonants.initial) } />
                 <WordSection 
                     title='Middle' 
-                    vowels={ temp_mid.vowels }
-                    consonants={ temp_mid.consonants } />
+                    vowels={ create_phoneme_selections(temp_mid.vowels, lang_vowels) }
+                    consonants={ create_phoneme_selections(temp_mid.consonants, lang_consonants) } />
                 <WordSection 
                     title='Final' 
-                    vowels={ temp_final.vowels }
-                    consonants={ temp_final.consonants } />
+                    vowels={ create_phoneme_selections(temp_final.vowels, lang_vowels) }
+                    consonants={ create_phoneme_selections(temp_final.consonants, Consonants.final) } />
             </div>
             <GeneratedWords generator={ generator } wordcount={ 100 } />
         </div>
