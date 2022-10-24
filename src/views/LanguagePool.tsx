@@ -3,13 +3,13 @@ import * as Vowels from '../defaults/vowels';
 import * as Consonants from '../defaults/consonants';
 import { Phoneme } from '../models/Phoneme';
 import { PhonemePool } from './PhonemePool';
-import { PhonemeSelector } from './PhonemeSelector';
+import { PhonemeSelector, PhonemeSelection } from './PhonemeSelector';
 
 export type LanguagePoolProps = {
-    simple_vowels: Phoneme[],
-    complex_vowels: Phoneme[], 
-    simple_consonants: Phoneme[],
-    complex_consonants: Phoneme[],
+    simple_vowels: PhonemeSelection[],
+    complex_vowels: PhonemeSelection[], 
+    simple_consonants: PhonemeSelection[],
+    complex_consonants: PhonemeSelection[],
 }
 
 export function LanguagePool(props: LanguagePoolProps)
@@ -20,20 +20,16 @@ export function LanguagePool(props: LanguagePoolProps)
             <header>Language<br />Phonemes</header>
             <PhonemePool 
                 title='Simple vowels' 
-                available_phonemes={ Vowels.simple }
-                selected_phonemes={ props.simple_vowels } />
+                phoneme_selections={ props.simple_vowels } />
             <PhonemePool 
                 title='Complex vowels' 
-                available_phonemes={ Vowels.complex }
-                selected_phonemes={ props.complex_vowels } />
+                phoneme_selections={ props.complex_vowels } />
             <PhonemePool 
                 title='Simple consonants' 
-                available_phonemes={ Consonants.simple }
-                selected_phonemes={ props.simple_consonants } />
+                phoneme_selections={ props.simple_consonants } />
             <PhonemePool 
                 title='Complex consonants' 
-                available_phonemes={ Consonants.complex }
-                selected_phonemes={ props.complex_consonants } />
+                phoneme_selections={ props.complex_consonants } />
         </div>
     )
 }
