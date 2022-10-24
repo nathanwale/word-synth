@@ -1,13 +1,9 @@
 import React from 'react';
-import * as Consonants from '../defaults/consonants'
-import * as Vowels from '../defaults/vowels'
-import { Phoneme } from '../models/Phoneme';
-import { PhonemeSelector } from './PhonemeSelector';
+import { PhonemeSelector, PhonemeSelection } from './PhonemeSelector';
 
 export type PhonemePoolProps = {
     title: string,
-    available_phonemes: Phoneme[],
-    selected_phonemes: Phoneme[],
+    phoneme_selections: PhonemeSelection[],
 }
 
 type PhonemeButtonProps = {
@@ -24,8 +20,22 @@ function PhonemeButton(props: PhonemeButtonProps)
 
 export function PhonemePool(props: PhonemePoolProps)
 {
-    const buttons = props.selected_phonemes.map((ph, i) => <PhonemeButton label={ph} key={ph+'-'+i} />)
     let [display_selector, set_display_selector] = React.useState(false)
+    let [phoneme_selections, set_phoneme_selections] = React.useState(props.phoneme_selections)
+
+    const buttons = phoneme_selections
+        .filter(phs => phs.selected)
+        .map((phs, i) => {
+        return <PhonemeButton 
+            label={phs.phoneme} 
+            key={phs.phoneme+'-'+i} />
+    })
+
+
+    function update_phoneme_selection(phoneme_selections: PhonemeSelection[]) {
+        set_phoneme_selections(phoneme_selections)
+    }
+
     return (
         <div className='phoneme-pool'>
             <header>{ props.title }</header>
@@ -34,13 +44,13 @@ export function PhonemePool(props: PhonemePoolProps)
                 <button 
                     className='toggle-display'
                     onClick={ () => set_display_selector(!display_selector) }>
-                    ⋯
+                    ∓
                 </button>
             </div>
             <PhonemeSelector 
                 title={ props.title }
-                available_phonemes={ props.available_phonemes }
-                selected_phonemes={ props.selected_phonemes }
+                phoneme_selections={ props.phoneme_selections }
+                selected_phonemes_updater={ update_phoneme_selection }
                 count={ 5 }
                 display={ display_selector } />
         </div>
