@@ -1,11 +1,11 @@
 import React from 'react';
-import { Phoneme } from '../models/Phoneme';
 import { PhonemePool } from './PhonemePool';
+import { PhonemeSelection } from './PhonemeSelector'
 
 export type WordSectionProps = {
     title: string,
-    vowels: Phoneme[],
-    consonants: Phoneme[],
+    vowels: PhonemeSelection[],
+    consonants: PhonemeSelection[],
 }
 
 export function WordSection(props: WordSectionProps)
@@ -15,12 +15,10 @@ export function WordSection(props: WordSectionProps)
             <header>{ props.title }</header>
             <PhonemePool 
                 title='Vowels' 
-                available_phonemes={ props.vowels } 
-                selected_phonemes={ props.vowels } />
+                phoneme_selections={ props.vowels } />
             <PhonemePool 
                 title='Consonants' 
-                available_phonemes={ props.consonants } 
-                selected_phonemes={ props.consonants } />
+                phoneme_selections={ props.consonants } />
         </div>
     )
 }
