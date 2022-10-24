@@ -18,7 +18,7 @@ export function PhonemeToggleButton(props: Props)
 
     React.useEffect(() => {
         props.selection_updater(props.phoneme, selected)
-    }, [selected])
+    }, [props, selected])
 
     return (
         <button className={ class_name } onClick={ toggle_selected }>

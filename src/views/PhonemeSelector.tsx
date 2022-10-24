@@ -34,7 +34,7 @@ export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
 
     React.useEffect(() => {
         props.selected_phonemes_updater(phoneme_selections)
-    }, [phoneme_selections])
+    }, [phoneme_selections, props])
 
     if (props.display) {
         let phoneme_toggles = phoneme_selections.map(
