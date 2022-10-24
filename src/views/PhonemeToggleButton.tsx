@@ -1,16 +1,27 @@
-import React from 'react';
+import React from 'react'
 import { Phoneme } from '../models/Phoneme';
 
 type Props = {
     phoneme: Phoneme,
     selected: boolean,
+    selection_updater: (phoneme: Phoneme, selected: boolean) => void,
 }
 
 export function PhonemeToggleButton(props: Props)
 {
-    let class_name = `phoneme-toggle ${ props.selected ? 'selected' : 'unselected'}`
+    let [selected, set_selected] = React.useState(props.selected)
+    let class_name = `phoneme-toggle ${ selected ? 'selected' : 'unselected'}`
+
+    function toggle_selected() {
+        set_selected(!selected)
+    }
+
+    React.useEffect(() => {
+        props.selection_updater(props.phoneme, selected)
+    }, [selected])
+
     return (
-        <button className={ class_name }>
+        <button className={ class_name } onClick={ toggle_selected }>
             { props.phoneme }
         </button>
     )
