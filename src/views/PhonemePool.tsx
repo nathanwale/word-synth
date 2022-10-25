@@ -20,7 +20,6 @@ function PhonemeButton(props: PhonemeButtonProps)
 
 export function PhonemePool(props: PhonemePoolProps)
 {
-    let [display_selector, set_display_selector] = React.useState(false)
     let [phoneme_selections, set_phoneme_selections] = React.useState(props.phoneme_selections)
 
     const buttons = phoneme_selections
@@ -32,6 +31,7 @@ export function PhonemePool(props: PhonemePoolProps)
     })
 
 
+
     function update_phoneme_selection(phoneme_selections: PhonemeSelection[]) {
         set_phoneme_selections(phoneme_selections)
     }
@@ -41,18 +41,12 @@ export function PhonemePool(props: PhonemePoolProps)
             <header>{ props.title }</header>
             <div className='buttons'>
                 { buttons }
-                <button 
-                    className='toggle-display'
-                    onClick={ () => set_display_selector(!display_selector) }>
-                    ∓
-                </button>
             </div>
             <PhonemeSelector 
                 title={ props.title }
                 phoneme_selections={ props.phoneme_selections }
                 selected_phonemes_updater={ update_phoneme_selection }
-                count={ 5 }
-                display={ display_selector } />
+                count={ 5 } />
         </div>
     )
 }
