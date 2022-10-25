@@ -4,6 +4,7 @@ import { PhonemeSelector, PhonemeSelection } from './PhonemeSelector';
 export type PhonemePoolProps = {
     title: string,
     phoneme_selections: PhonemeSelection[],
+    selected_phonemes_updater: (phoneme_selections: PhonemeSelection[]) => void,
 }
 
 type PhonemeButtonProps = {
