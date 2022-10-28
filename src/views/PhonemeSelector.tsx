@@ -7,6 +7,13 @@ export type PhonemeSelection = {
     selected: boolean,
 }
 
+export function selected_phonemes(phoneme_selections: PhonemeSelection[]): Phoneme[]
+{
+    return phoneme_selections
+        .filter(phs => phs.selected)
+        .map(phs => phs.phoneme)
+}
+
 export type PhonemeSelectorProps = {
     title: string,
     count: number,
