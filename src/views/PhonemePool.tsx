@@ -31,7 +31,9 @@ export function PhonemePool(props: PhonemePoolProps)
             key={phs.phoneme+'-'+i} />
     })
 
-
+    React.useEffect(() => {
+        props.selected_phonemes_updater(phoneme_selections)
+    }, [phoneme_selections])
 
     function update_phoneme_selection(phoneme_selections: PhonemeSelection[]) {
         set_phoneme_selections(phoneme_selections)
