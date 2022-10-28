@@ -51,9 +51,29 @@ const temp_final: Template = {
 
 function App() 
 {
+    let [lang_pool_vowels, set_lang_pool_vowels] = React.useState(lang_vowels)
+    let [lang_pool_cons, set_lang_pool_cons] = React.useState(lang_consonants)
+    let [initial_vowels, set_initial_vowels] = React.useState(create_phoneme_selections(lang_pool_vowels, lang_pool_vowels))
+
     let generator: Generator.Generator = {
         templates: [temp_init, temp_mid, temp_final]
     }
+
+    function update_language_pool_vowels(vowels: Phoneme[]) {
+        set_lang_pool_vowels(vowels)
+        console.log(`<App> new vowels: ${vowels}`)
+    }
+
+    function update_language_pool_cons(cons: Phoneme[]) {
+        set_lang_pool_cons(cons)
+        console.log(`<App> new cons: ${cons}`)
+    }
+
+    React.useEffect(() => {
+        set_initial_vowels(() => create_phoneme_selections(lang_pool_vowels, lang_pool_vowels))
+        console.log(`<App> new initial_vowels: ${lang_pool_vowels}`)
+    }, [lang_pool_vowels])
+
     return (
         <div className="App">
             <header className="nameplate">
@@ -63,20 +83,22 @@ function App()
                 simple_vowels={ create_phoneme_selections(Vowels.simple, simple_vowels) }
                 complex_vowels={ create_phoneme_selections(Vowels.complex, complex_vowels) }
                 simple_consonants={ create_phoneme_selections(Consonants.simple, simple_consonants) }
-                complex_consonants={ create_phoneme_selections(Consonants.complex, complex_consonants) } />
+                complex_consonants={ create_phoneme_selections(Consonants.complex, complex_consonants) } 
+                vowels_updater={ update_language_pool_vowels }
+                consonants_updater={ update_language_pool_cons } />
             <div className='phonemes'>
                 <WordSection 
                     title='Initial' 
-                    vowels={ create_phoneme_selections(temp_init.vowels, lang_vowels) }
-                    consonants={ create_phoneme_selections(temp_init.consonants, Consonants.initial) } />
+                    vowels={ initial_vowels }
+                    consonants={ create_phoneme_selections(lang_pool_cons, lang_pool_cons) } />
                 <WordSection 
                     title='Middle' 
-                    vowels={ create_phoneme_selections(temp_mid.vowels, lang_vowels) }
-                    consonants={ create_phoneme_selections(temp_mid.consonants, lang_consonants) } />
+                    vowels={ create_phoneme_selections(lang_pool_vowels, lang_pool_vowels) }
+                    consonants={ create_phoneme_selections(lang_pool_cons, lang_pool_cons) } />
                 <WordSection 
                     title='Final' 
-                    vowels={ create_phoneme_selections(temp_final.vowels, lang_vowels) }
-                    consonants={ create_phoneme_selections(temp_final.consonants, Consonants.final) } />
+                    vowels={ create_phoneme_selections(lang_pool_vowels, lang_pool_vowels) }
+                    consonants={ create_phoneme_selections(lang_pool_cons, lang_pool_cons) } />
             </div>
             <GeneratedWords generator={ generator } wordcount={ 100 } />
         </div>
