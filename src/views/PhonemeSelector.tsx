@@ -1,18 +1,8 @@
 import React from 'react';
 import { Phoneme } from '../models/Phoneme';
 import { PhonemeToggleButton } from './PhonemeToggleButton';
+import { PhonemeSelection } from '../models/PhonemeSelection';
 
-export type PhonemeSelection = {
-    phoneme: Phoneme, 
-    selected: boolean,
-}
-
-export function selected_phonemes(phoneme_selections: PhonemeSelection[]): Phoneme[]
-{
-    return phoneme_selections
-        .filter(phs => phs.selected)
-        .map(phs => phs.phoneme)
-}
 
 export type PhonemeSelectorProps = {
     title: string,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PhonemePool } from './PhonemePool';
-import { PhonemeSelection } from './PhonemeSelector'
+import { PhonemeSelection } from '../models/PhonemeSelection'
 
 export type WordSectionProps = {
     title: string,

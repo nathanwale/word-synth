@@ -10,15 +10,8 @@ import './style/App.scss';
 import { WordSection } from './WordSection'
 import { LanguagePool } from './LanguagePool'
 import { Phoneme } from '../models/Phoneme'
-import { PhonemeSelection } from './PhonemeSelector'
+import { PhonemeSelection, create_phoneme_selections } from '../models/PhonemeSelection'
 
-function create_phoneme_selections(all: Phoneme[], selected: Phoneme[]): PhonemeSelection[]
-{
-    return all.map((ph) => ({
-        phoneme: ph,
-        selected: selected.includes(ph),
-    }))
-}
 
 const simple_vowels = Random.take(Vowels.simple, 5)
 const complex_vowels = Random.take(Vowels.complex, 5)

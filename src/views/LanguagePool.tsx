@@ -1,6 +1,6 @@
 import React from 'react';
 import { PhonemePool } from './PhonemePool';
-import { PhonemeSelection, selected_phonemes } from './PhonemeSelector';
+import { PhonemeSelection, selected_phonemes } from '../models/PhonemeSelection'
 import { Phoneme } from '../models/Phoneme'
 
 export type LanguagePoolProps = {
