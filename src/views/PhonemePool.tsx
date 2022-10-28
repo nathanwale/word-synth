@@ -23,6 +23,17 @@ export function PhonemePool(props: PhonemePoolProps)
 {
     let [phoneme_selections, set_phoneme_selections] = React.useState(props.phoneme_selections)
 
+    phoneme_selections.sort(
+        (a, b) => {
+            if (a.phoneme > b.phoneme) {
+                return 1
+            } else if (a.phoneme < b.phoneme) {
+                return -1
+            } else {
+                return 0
+            }
+        }
+    )
     const buttons = phoneme_selections
         .filter(phs => phs.selected)
         .map((phs, i) => {
