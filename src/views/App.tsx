@@ -73,26 +73,12 @@ function App()
                 WordSynth
             </header>
             <LanguagePool
-                simple_vowels={ create_phoneme_selections(Vowels.simple, simple_vowels) }
-                complex_vowels={ create_phoneme_selections(Vowels.complex, complex_vowels) }
-                simple_consonants={ create_phoneme_selections(Consonants.simple, simple_consonants) }
-                complex_consonants={ create_phoneme_selections(Consonants.complex, complex_consonants) } 
-                vowels_updater={ update_language_pool_vowels }
-                consonants_updater={ update_language_pool_cons } />
-            <div className='phonemes'>
-                <WordSection 
-                    title='Initial' 
-                    vowels={ initial_vowels }
-                    consonants={ create_phoneme_selections(lang_pool_cons, lang_pool_cons) } />
-                <WordSection 
-                    title='Middle' 
-                    vowels={ create_phoneme_selections(lang_pool_vowels, lang_pool_vowels) }
-                    consonants={ create_phoneme_selections(lang_pool_cons, lang_pool_cons) } />
-                <WordSection 
-                    title='Final' 
-                    vowels={ create_phoneme_selections(lang_pool_vowels, lang_pool_vowels) }
-                    consonants={ create_phoneme_selections(lang_pool_cons, lang_pool_cons) } />
-            </div>
+                state={ state.language_pool }
+                updated={ state => dispatch([Msg.UpdateLanguagePool, state])} />
+            <WordSections
+                state={ state.word_sections }
+                updated={ state => dispatch([Msg.UpdateWordSections, state])}
+                />
             <GeneratedWords generator={ generator } wordcount={ 100 } />
         </div>
     );
