@@ -19,3 +19,8 @@ export function create_phoneme_selections(all: Phoneme[], selected: Phoneme[]): 
         selected: selected.includes(ph),
     }))
 }
+
+export function concat_phoneme_selections(phs1: PhonemeSelection[], phs2: PhonemeSelection[]): Phoneme[] {
+    return selected_phonemes(phs1)
+        .concat(selected_phonemes(phs2))
+}
