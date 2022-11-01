@@ -59,7 +59,7 @@ export function PhonemePool(props: PhonemePoolProps)
             </div>
             <PhonemeSelector 
                 title={ props.title }
-                phoneme_selections={ props.phoneme_selections }
+                phoneme_selections={ phoneme_selections }
                 selected_phonemes_updater={ update_phoneme_selection }
                 count={ 5 } />
         </div>
