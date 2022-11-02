@@ -10,7 +10,7 @@ import './style/App.scss';
 import { LanguagePool, State as LanguagePoolState } from './LanguagePool'
 import { Phoneme } from '../models/Phoneme'
 import { create_phoneme_selections } from '../models/PhonemeSelection'
-import { WordSections, State as WordSectionsState } from './WordSections'
+import { WordSectionGroup, State as WordSectionsState } from './WordSectionGroup'
 
 export type State = {
     language_pool: LanguagePoolState,
@@ -162,7 +162,7 @@ function App()
             <LanguagePool
                 state={ state.language_pool }
                 updated={ state => dispatch([Msg.UpdateLanguagePool, state])} />
-            <WordSections
+            <WordSectionGroup
                 state={ state.word_sections }
                 updated={ state => dispatch([Msg.UpdateWordSections, state])}
                 />
