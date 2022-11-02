@@ -13,7 +13,7 @@ export type PhonemeSelectorProps = {
 
 export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
 {
-    const [phoneme_selections, set_phoneme_selections] = React.useState(() => props.phoneme_selections)
+    const [phoneme_selections, set_phoneme_selections] = React.useState(props.phoneme_selections)
     const [displayed, set_displayed] = React.useState(false)
 
     function update_selected_phoneme(phoneme: Phoneme, selected: boolean) {
@@ -28,6 +28,10 @@ export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
         })
         set_phoneme_selections(new_list)
     }
+
+    React.useEffect(() => {
+        set_phoneme_selections(props.phoneme_selections)
+    }, [props.phoneme_selections])
 
     React.useEffect(() => {
         props.selected_phonemes_updater(phoneme_selections)

@@ -44,6 +44,10 @@ export function PhonemePool(props: PhonemePoolProps)
     })
 
     React.useEffect(() => {
+        set_phoneme_selections(props.phoneme_selections)
+    }, [props.phoneme_selections])
+
+    React.useEffect(() => {
         props.selected_phonemes_updater(phoneme_selections)
     }, [phoneme_selections])
 
