@@ -24,3 +24,7 @@ export function concat_phoneme_selections(phs1: PhonemeSelection[], phs2: Phonem
     return selected_phonemes(phs1)
         .concat(selected_phonemes(phs2))
 }
+
+export function only_selected(phs: PhonemeSelection[]): PhonemeSelection[] {
+    return phs.filter(phs => phs.selected)
+}
