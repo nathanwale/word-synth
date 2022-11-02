@@ -9,7 +9,7 @@ import { GeneratedWords } from './GeneratedWords';
 import './style/App.scss';
 import { LanguagePool, State as LanguagePoolState } from './LanguagePool'
 import { Phoneme } from '../models/Phoneme'
-import { create_phoneme_selections } from '../models/PhonemeSelection'
+import { create_phoneme_selections, only_selected } from '../models/PhonemeSelection'
 import { WordSectionGroup, State as WordSectionsState } from './WordSectionGroup'
 
 export type State = {
@@ -40,16 +40,16 @@ export function reducer(state: State, action: Action): State
                 ...state,
                 word_sections: {
                     initial: {
-                        vowels: [...payload.vowels.simple, ...payload.vowels.complex],
-                        consonants: [...payload.consonants.simple, ...payload.consonants.complex],
+                        vowels: [...only_selected(payload.vowels.simple), ...only_selected(payload.vowels.complex)],
+                        consonants: [...only_selected(payload.consonants.simple), ...only_selected(payload.consonants.complex)],
                     },
                     middle: {
-                        vowels: [...payload.vowels.simple, ...payload.vowels.complex],
-                        consonants: [...payload.consonants.simple, ...payload.consonants.complex],
+                        vowels: [...only_selected(payload.vowels.simple), ...only_selected(payload.vowels.complex)],
+                        consonants: [...only_selected(payload.consonants.simple), ...only_selected(payload.consonants.complex)],
                     },
                     final: {
-                        vowels: [...payload.vowels.simple, ...payload.vowels.complex],
-                        consonants: [...payload.consonants.simple, ...payload.consonants.complex],
+                        vowels: [...only_selected(payload.vowels.simple), ...only_selected(payload.vowels.complex)],
+                        consonants: [...only_selected(payload.consonants.simple), ...only_selected(payload.consonants.complex)],
                     },
                 }
             }
