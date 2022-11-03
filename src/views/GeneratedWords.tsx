@@ -1,8 +1,8 @@
 import React from 'react';
-import * as Generator from  '../models/Generator';
+import * as context from './context'
 
 type GeneratedWordsProps = {
-    generator: Generator.Generator,
+    words: string[]
     wordcount: number
 }
 
@@ -22,20 +22,15 @@ function WordList(props: WordListProps)
 
 export function GeneratedWords(props: GeneratedWordsProps)
 {
-    let [words, set_words] = React.useState(new_words())
+    const words = context.useStateContext().generated_words
+    const dispatch = context.useDispatchContext()
 
-    function update_words() {
-        set_words(new_words())
-    }
-
-    function new_words() {
-        return Generator.generate_many(props.generator, props.wordcount)
-    }
+    
 
 
     return (
         <div className='generated-words'>
-            <button onClick={ update_words }>Regenerate</button>
+            <button onClick={ () => dispatch([context.Msg.GenerateWords, props.wordcount]) }>Regenerate</button>
             <WordList words={ words } />
         </div>
     )
