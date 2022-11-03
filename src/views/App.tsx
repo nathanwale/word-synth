@@ -11,6 +11,7 @@ import { LanguagePool, State as LanguagePoolState } from './LanguagePool'
 import { Phoneme } from '../models/Phoneme'
 import { create_phoneme_selections, only_selected } from '../models/PhonemeSelection'
 import { WordSectionGroup, State as WordSectionsState } from './WordSectionGroup'
+import * as context from './context'
 
 export type State = {
     language_pool: LanguagePoolState,
@@ -126,7 +127,6 @@ function App()
 {
 
     let [state, dispatch] = React.useReducer(reducer, init_state())
-    let Context = React.createContext(null)
     let [lang_pool_vowels, set_lang_pool_vowels] = React.useState(lang_vowels)
     let [lang_pool_cons, set_lang_pool_cons] = React.useState(lang_consonants)
     let [initial_vowels, set_initial_vowels] = React.useState(create_phoneme_selections(lang_pool_vowels, lang_pool_vowels))
@@ -155,19 +155,18 @@ function App()
     }, [state])
 
     return (
-        <div className="App">
-            <header className="nameplate">
-                WordSynth
-            </header>
-            <LanguagePool
-                state={ state.language_pool }
-                updated={ state => dispatch([Msg.UpdateLanguagePool, state])} />
-            <WordSectionGroup
-                state={ state.word_sections }
-                updated={ state => dispatch([Msg.UpdateWordSections, state])}
-                />
-            <GeneratedWords generator={ generator } wordcount={ 100 } />
-        </div>
+        <context.StateProvider>
+            <div className="App">
+                <header className="nameplate">
+                    WordSynth
+                </header>
+                <LanguagePool
+                    state={ state.language_pool } />
+                <WordSectionGroup
+                    state={ state.word_sections } />
+                <GeneratedWords generator={ generator } wordcount={ 100 } />
+            </div>
+        </context.StateProvider>
     );
 }
 
