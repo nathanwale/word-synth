@@ -164,7 +164,9 @@ function App()
                     state={ state.language_pool } />
                 <WordSectionGroup
                     state={ state.word_sections } />
-                <GeneratedWords generator={ generator } wordcount={ 100 } />
+                <GeneratedWords 
+                    words={ state.generated_words }
+                    wordcount={ 100 } />
             </div>
         </context.StateProvider>
     );
