@@ -63,11 +63,11 @@ export function WordSection(props: WordSectionProps)
             <PhonemePool 
                 title='Vowels' 
                 phoneme_selections={ props.state.vowels } 
-                selected_phonemes_updater={ phs  => props.updated_vowels(props.state.vowels) } />
+                selected_phonemes_updater={ phs => props.updated_vowels(phs) } />
             <PhonemePool 
                 title='Consonants' 
                 phoneme_selections={ props.state.consonants } 
-                selected_phonemes_updater={ phs  => props.updated_consonants(props.state.consonants) } />
+                selected_phonemes_updater={ phs => props.updated_consonants(phs) } />
         </div>
     )
 }
