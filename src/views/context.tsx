@@ -1,13 +1,14 @@
-import React, { PropsWithChildren, ReactElement } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { State as LanguagePoolState } from './LanguagePool'
 import { State as WordSectionGroupState } from './WordSectionGroup'
-import { State as WordSectionState } from './WordSection'
 import { create_phoneme_selections } from '../models/PhonemeSelection'
 import * as Vowels from '../defaults/vowels'
 import * as Consonants from '../defaults/consonants'
 import * as Random from '../random'
-import { PhonemeSelection, only_selected } from '../models/PhonemeSelection'
-import { Voicing } from '../models/Voicing'
+import { PhonemeSelection, only_selected, selected_phonemes } from '../models/PhonemeSelection'
+import * as Generator from '../models/Generator'
+import { Template } from '../models/Template'
+
 
 /*
 ** State and Dispatch context consts
@@ -81,7 +82,7 @@ type Action =
     | [Msg.UpdatedMiddleConsonants, PhonemeSelection[]]
     | [Msg.UpdatedFinalVowels, PhonemeSelection[]]
     | [Msg.UpdatedFinalConsonants, PhonemeSelection[]]
-    | [Msg.GenerateWords, []]
+    | [Msg.GenerateWords, number]
 
 
 /*
@@ -90,29 +91,25 @@ type Action =
 
 export function reducer(new_state: State, action: Action): State
 {
-    let [msg, payload] = action
+    const [msg, payload]: [Msg, PhonemeSelection[] | number] = action
     let state = {...new_state}
     console.log(`<${msg}>:`, payload)
-    const update_word_section = word_section_updater(
-        state.word_sections,
-        payload,
-        state.language_pool)
     switch (msg) {
         case Msg.SelectLangSimpleVowels:
-            state.language_pool.vowels.simple = payload
-            state.word_sections = update_word_section("vowels", "simple")
+            state.language_pool.vowels.simple = payload as PhonemeSelection[]
+            state.word_sections = word_section_updater(state.word_sections, payload as PhonemeSelection[], state.language_pool,"vowels", "simple")
             break
         case Msg.SelectLangComplexVowels:
-            state.language_pool.vowels.complex = payload
-            state.word_sections = update_word_section("vowels", "complex")
+            state.language_pool.vowels.complex = payload as PhonemeSelection[]
+            state.word_sections = word_section_updater(state.word_sections, payload as PhonemeSelection[], state.language_pool, "vowels", "complex")
             break
         case Msg.SelectLangSimpleConsonants:
-            state.language_pool.consonants.simple = payload
-            state.word_sections = update_word_section("consonants", "simple")
+            state.language_pool.consonants.simple = payload as PhonemeSelection[]
+            state.word_sections = word_section_updater(state.word_sections, payload as PhonemeSelection[], state.language_pool, "consonants", "simple")
             break
         case Msg.SelectLangComplexConsonants:
-            state.language_pool.consonants.complex = payload
-            state.word_sections = update_word_section("consonants", "complex")
+            state.language_pool.consonants.complex = payload as PhonemeSelection[]
+            state.word_sections = word_section_updater(state.word_sections, payload as PhonemeSelection[], state.language_pool, "consonants", "complex")
             break
         case Msg.UpdatedInitialVowels:
             state.word_sections.initial.vowels = payload as PhonemeSelection[]
@@ -133,13 +130,15 @@ export function reducer(new_state: State, action: Action): State
             state.word_sections.final.consonants = payload as PhonemeSelection[]
             break
         case Msg.GenerateWords:
-            state.generated_words = payload as string[]
+            let wordcount = payload as number
+            state.generated_words = new_words(state.word_sections, wordcount)
             break
     }
     return state
 }
 
 export function init_state(): State {
+    const generated_word_count = 50
     const simple_vowels = Random.take(Vowels.simple, 5)
     const complex_vowels = Random.take(Vowels.complex, 5)
 
@@ -177,27 +176,61 @@ export function init_state(): State {
     return {
         language_pool: language_pool,
         word_sections: word_sections,
-        generated_words: []
+        generated_words: new_words(word_sections, generated_word_count),
     }
 }
 
 
 function word_section_updater(
     old_state: WordSectionGroupState, phoneme_selections: PhonemeSelection[], 
-    lang_pool: LanguagePoolState)
+    lang_pool: LanguagePoolState,
+    voicing: "vowels" | "consonants", complexity: "simple" | "complex"): WordSectionGroupState
 {
-    return function(voicing: "vowels" | "consonants", complexity: "simple" | "complex"): WordSectionGroupState {
-        const other_complexity = complexity === "complex" ? "simple" : "complex"
-        const state = {...old_state}
-        const combined = combine_phonemes(phoneme_selections, lang_pool[voicing][other_complexity])
-        state.initial[voicing] = combined
-        state.middle[voicing] = combined
-        state.final[voicing] = combined
-        return state    
-    } 
+    const other_complexity = complexity === "complex" ? "simple" : "complex"
+    const state = {...old_state}
+    const combined = combine_phonemes(phoneme_selections, lang_pool[voicing][other_complexity])
+    state.initial[voicing] = combined
+    state.middle[voicing] = combined
+    state.final[voicing] = combined
+    return state    
 }
 
 function combine_phonemes(a: PhonemeSelection[], b: PhonemeSelection[]): PhonemeSelection[]
 {
     return [...only_selected(a), ...only_selected(b)]
+}
+
+function new_words(word_sections: WordSectionGroupState, wordcount: number): string[] {
+    const temp_init: Template = {
+        min: 1,
+        max: 1,
+        vowels: take_random_phonemes(word_sections.initial.vowels, 7),
+        consonants: take_random_phonemes(word_sections.initial.consonants, 15)
+    }
+    
+    const temp_mid: Template = {
+        min: 0,
+        max: 2,
+        vowels: take_random_phonemes(word_sections.middle.vowels, 7),
+        consonants: take_random_phonemes(word_sections.middle.consonants, 15)
+    }
+    
+    const temp_final: Template = {
+        min: 1,
+        max: 1,
+        vowels: take_random_phonemes(word_sections.final.vowels, 7),
+        consonants: take_random_phonemes(word_sections.final.consonants, 15)
+    }
+
+    let generator: Generator.Generator = {
+        templates: [temp_init, temp_mid, temp_final]
+    }
+
+    return Generator.generate_many(generator, wordcount)
+}
+
+function take_random_phonemes(phs: PhonemeSelection[], count: number): string[]
+{
+    const phons = selected_phonemes(phs)
+    return Random.take(phons, count)
 }
