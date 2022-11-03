@@ -1,11 +1,12 @@
-import React from 'react';
-import { PhonemeSelector } from './PhonemeSelector';
-import { PhonemeSelection } from '../models/PhonemeSelection';
+import React from 'react'
+import { PhonemeSelector } from './PhonemeSelector'
+import { PhonemeSelection } from '../models/PhonemeSelection'
+import { Phoneme } from '../models/Phoneme'
 
 export type PhonemePoolProps = {
     title: string,
     phoneme_selections: PhonemeSelection[],
-    selected_phonemes_updater: (phoneme_selections: PhonemeSelection[]) => void,
+    selected_phonemes_updater: (phs: PhonemeSelection[]) => void,
 }
 
 type PhonemeButtonProps = {
@@ -22,8 +23,9 @@ function PhonemeButton(props: PhonemeButtonProps)
 
 export function PhonemePool(props: PhonemePoolProps)
 {
-    let [phoneme_selections, set_phoneme_selections] = React.useState(props.phoneme_selections)
+    // let [phoneme_selections, set_phoneme_selections] = React.useState(props.phoneme_selections)
 
+    let phoneme_selections = [...props.phoneme_selections]
     phoneme_selections.sort(
         (a, b) => {
             if (a.phoneme > b.phoneme) {
@@ -43,17 +45,17 @@ export function PhonemePool(props: PhonemePoolProps)
             key={phs.phoneme+'-'+i} />
     })
 
-    React.useEffect(() => {
-        set_phoneme_selections(props.phoneme_selections)
-    }, [props.phoneme_selections])
+    // React.useEffect(() => {
+    //     set_phoneme_selections(props.phoneme_selections)
+    // }, [props.phoneme_selections])
 
-    React.useEffect(() => {
-        props.selected_phonemes_updater(phoneme_selections)
-    }, [phoneme_selections])
+    // React.useEffect(() => {
+    //     props.selected_phonemes_updater(phoneme_selections)
+    // }, [phoneme_selections])
 
-    function update_phoneme_selection(phoneme_selections: PhonemeSelection[]) {
-        set_phoneme_selections(phoneme_selections)
-    }
+    // function update_phoneme_selection(phoneme_selections: PhonemeSelection[]) {
+    //     set_phoneme_selections(phoneme_selections)
+    // }
 
     return (
         <div className='phoneme-pool'>
@@ -64,7 +66,7 @@ export function PhonemePool(props: PhonemePoolProps)
             <PhonemeSelector 
                 title={ props.title }
                 phoneme_selections={ phoneme_selections }
-                selected_phonemes_updater={ update_phoneme_selection }
+                selected_phonemes_updater={ props.selected_phonemes_updater }
                 count={ 5 } />
         </div>
     )

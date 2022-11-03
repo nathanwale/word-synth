@@ -8,16 +8,28 @@ export type PhonemeSelectorProps = {
     title: string,
     count: number,
     phoneme_selections: PhonemeSelection[],
-    selected_phonemes_updater: (phoneme_selections: PhonemeSelection[]) => void
+    selected_phonemes_updater: (phs: PhonemeSelection[]) => void
 }
 
 export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
 {
-    const [phoneme_selections, set_phoneme_selections] = React.useState(props.phoneme_selections)
+    // const [phoneme_selections, set_phoneme_selections] = React.useState(props.phoneme_selections)
     const [displayed, set_displayed] = React.useState(false)
 
-    function update_selected_phoneme(phoneme: Phoneme, selected: boolean) {
-        let new_list = phoneme_selections.map(phs => {
+    // function update_selected_phoneme(phoneme: Phoneme, selected: boolean) {
+        
+    // }
+
+    // React.useEffect(() => {
+    //     set_phoneme_selections(props.phoneme_selections)
+    // }, [props.phoneme_selections])
+
+    // React.useEffect(() => {
+    //     props.selected_phonemes_updater(phoneme_selections)
+    // }, [phoneme_selections])
+
+    function updater(phoneme: Phoneme, selected: boolean) {
+        let new_list = props.phoneme_selections.map(phs => {
             if (phs.phoneme === phoneme) {
                 return {
                     phoneme: phoneme,
@@ -26,16 +38,8 @@ export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
             } 
             return phs
         })
-        set_phoneme_selections(new_list)
+        props.selected_phonemes_updater(new_list)
     }
-
-    React.useEffect(() => {
-        set_phoneme_selections(props.phoneme_selections)
-    }, [props.phoneme_selections])
-
-    React.useEffect(() => {
-        props.selected_phonemes_updater(phoneme_selections)
-    }, [phoneme_selections])
 
     function close_display() {
         set_displayed(false)
@@ -48,13 +52,13 @@ export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
     let selector_buttons = <></>
 
     if (displayed) {
-        let phoneme_toggles = phoneme_selections.map(
+        let phoneme_toggles = props.phoneme_selections.map(
             (ph_selection) => 
                 <PhonemeToggleButton  
                     key={ ph_selection.phoneme } 
                     phoneme={ ph_selection.phoneme }
                     selected={ ph_selection.selected }
-                    selection_updater={ update_selected_phoneme } />
+                    selection_updater={ updater } />
         )
         selector_buttons = (
             <div className='phoneme-selector'>
@@ -64,6 +68,7 @@ export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
             </div>
         )
     }
+    
     return (
         <div>
             <button 

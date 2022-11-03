@@ -1,5 +1,6 @@
 import React from 'react';
 import { WordSection, State as WordSectionState } from './WordSection';
+import * as context from './context'
 
 export type State = {
     initial: WordSectionState,
@@ -7,66 +8,73 @@ export type State = {
     final: WordSectionState,
 }
 
-export enum Msg {
-    UpdatedInitial = "updated initial word section",
-    UpdatedMiddle = "updated middle word section",
-    UpdatedFinal = "updated final word section",
-}
+// export enum Msg {
+//     UpdatedInitial = "updated initial word section",
+//     UpdatedMiddle = "updated middle word section",
+//     UpdatedFinal = "updated final word section",
+// }
 
-type Action =
-    | [Msg.UpdatedInitial, WordSectionState]
-    | [Msg.UpdatedMiddle, WordSectionState]
-    | [Msg.UpdatedFinal, WordSectionState]
+// type Action =
+//     | [Msg.UpdatedInitial, WordSectionState]
+//     | [Msg.UpdatedMiddle, WordSectionState]
+//     | [Msg.UpdatedFinal, WordSectionState]
 
-export function reducer(state: State, action: Action): State
-{
-    let [msg, payload] = action
-    console.log(`<${msg}>:`, payload)
-    state = {...state}
-    switch (msg) {
-        case Msg.UpdatedInitial:
-            state.initial = payload as WordSectionState
-            break
-        case Msg.UpdatedMiddle:
-            state.middle = payload as WordSectionState
-            break
-        case Msg.UpdatedFinal:
-            state.final = payload as WordSectionState
-            break
-    }
-    return state
-}
+// export function reducer(state: State, action: Action): State
+// {
+//     let [msg, payload] = action
+//     console.log(`<${msg}>:`, payload)
+//     state = {...state}
+//     switch (msg) {
+//         case Msg.UpdatedInitial:
+//             state.initial = payload as WordSectionState
+//             break
+//         case Msg.UpdatedMiddle:
+//             state.middle = payload as WordSectionState
+//             break
+//         case Msg.UpdatedFinal:
+//             state.final = payload as WordSectionState
+//             break
+//     }
+//     return state
+// }
 
-export type WordSectionsProps = {
+export type WordSectionGroupProps = {
     state: State,
-    updated: (s: State) => void
 }
 
 
 
-export function WordSectionGroup(props: WordSectionsProps)
+export function WordSectionGroup(props: WordSectionGroupProps)
 {
-    let [state, dispatch] = React.useReducer(reducer, props.state)
+    // let [state, dispatch] = React.useReducer(reducer, {...props.state})
+    let state = context.useStateContext().word_sections
+    let dispatch = context.useDispatchContext()
 
-    React.useEffect(() => {
-        console.log("Raising state from <WordSections>")
-    }, [state])
+    // React.useEffect(() => {
+    //     console.log("Raising state from <WordSections>")
+    // }, [state])
+
+    // React.useEffect(() => {
+
+    // })
 
     return (
         <div className='phonemes'>
-            <header>Initial vowel count: {state.initial.vowels.length} or {props.state.initial.vowels.length}</header>
             <WordSection 
                 title='Initial'
-                state={ props.state.initial }
-                updated={ state => dispatch([Msg.UpdatedInitial, state]) } />
+                state={ state.initial }
+                updated_vowels={ phs => dispatch([context.Msg.UpdatedInitialVowels, phs]) }
+                updated_consonants={ phs => dispatch([context.Msg.UpdatedInitialConsonants, phs]) } />
             <WordSection 
                 title='Middle' 
-                state={ props.state.middle }
-                updated={ state => dispatch([Msg.UpdatedMiddle, state]) } />
+                state={ state.middle }
+                updated_vowels={ phs => dispatch([context.Msg.UpdatedMiddleVowels, phs]) }
+                updated_consonants={ phs => dispatch([context.Msg.UpdatedMiddleConsonants, phs]) } />
             <WordSection 
                 title='Final' 
-                state={ props.state.final }
-                updated={ state => dispatch([Msg.UpdatedFinal, state]) } />
+                state={ state.final }
+                updated_vowels={ phs => dispatch([context.Msg.UpdatedFinalVowels, phs]) }
+                updated_consonants={ phs => dispatch([context.Msg.UpdatedFinalConsonants, phs]) } />
         </div>
     )
 }
