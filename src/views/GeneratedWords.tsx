@@ -1,9 +1,6 @@
 import * as reducer from './reducer'
 import * as context from './context'
 
-type GeneratedWordsProps = {
-    wordcount: number
-}
 
 type WordListProps = {
     words: string[]
@@ -19,9 +16,9 @@ function WordList(props: WordListProps)
     )
 }
 
-export function GeneratedWords(props: GeneratedWordsProps)
+export function GeneratedWords()
 {
-    const words = context.useStateContext().generated_words
+    const {words, count} = context.useStateContext().generated_words
     const dispatch = context.useDispatchContext()
 
     
@@ -29,7 +26,7 @@ export function GeneratedWords(props: GeneratedWordsProps)
 
     return (
         <div className='generated-words'>
-            <button onClick={ () => dispatch([reducer.Msg.GenerateWords, props.wordcount]) }>Regenerate</button>
+            <button onClick={ () => dispatch([reducer.Msg.GenerateWords, count]) }>Regenerate</button>
             <WordList words={ words } />
         </div>
     )

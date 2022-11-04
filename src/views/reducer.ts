@@ -89,7 +89,7 @@ export function reducer(new_state: AppState, action: Action): AppState
             break
         case Msg.GenerateWords:
             let wordcount = payload as number
-            state.generated_words = init.new_words(state.word_sections, wordcount)
+            state.generated_words.words = init.new_words(state.word_sections, wordcount)
             break
     }
     return state

@@ -12,7 +12,10 @@ import * as context from './context'
 export type State = {
     language_pool: LanguagePoolState,
     word_sections: WordSectionGroupState,
-    generated_words: string[],
+    generated_words: {
+        words: string[],
+        count: number,
+    }
 }
 
 
@@ -30,8 +33,7 @@ function App()
                 </header>
                 <LanguagePool />
                 <WordSectionGroup />
-                <GeneratedWords 
-                    wordcount={ 100 } />
+                <GeneratedWords />
             </div>
         </context.StateProvider>
     );
