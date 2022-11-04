@@ -1,4 +1,3 @@
-import * as context from './context'
 import * as Random from '../random'
 import * as Vowels from '../defaults/vowels'
 import * as Consonants from '../defaults/consonants'
