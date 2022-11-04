@@ -4,6 +4,7 @@ import { State as AppState } from './App'
 import { PhonemeSelection } from '../models/PhonemeSelection'
 import * as init from './init'
 
+
 /*
 ** Messages
 */
@@ -22,8 +23,9 @@ export enum Msg {
     UpdatedFinalConsonants = "updated final word consonants",
 }
 
+
 /*
-** Messages
+** Actions
 */
 
 export type Action =
@@ -38,6 +40,7 @@ export type Action =
     | [Msg.UpdatedFinalVowels, PhonemeSelection[]]
     | [Msg.UpdatedFinalConsonants, PhonemeSelection[]]
     | [Msg.GenerateWords, number]
+
 
 
 /*
@@ -91,6 +94,11 @@ export function reducer(new_state: AppState, action: Action): AppState
     }
     return state
 }
+
+
+/*
+** Transfer updates from LanguagePool to WordSectionGroup
+*/
 
 function word_section_updater(
     old_state: WordSectionGroupState, phoneme_selections: PhonemeSelection[], 
