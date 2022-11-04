@@ -10,12 +10,16 @@ import './style/App.scss';
 import { LanguagePool, State as LanguagePoolState } from './LanguagePool'
 import { Phoneme } from '../models/Phoneme'
 import { create_phoneme_selections, only_selected } from '../models/PhonemeSelection'
-import { WordSectionGroup, State as WordSectionsState } from './WordSectionGroup'
+import { WordSectionGroup, State as WordSectionGroupState } from './WordSectionGroup'
 import * as context from './context'
+
+/*
+** State
+*/
 
 export type State = {
     language_pool: LanguagePoolState,
-    word_sections: WordSectionsState,
+    word_sections: WordSectionGroupState,
     generated_words: string[],
 }
 
@@ -27,7 +31,7 @@ export enum Msg {
 
 type Action =
     | [Msg.UpdateLanguagePool, LanguagePoolState]
-    | [Msg.UpdateWordSections, WordSectionsState]
+    | [Msg.UpdateWordSections, WordSectionGroupState]
     | [Msg.GenerateWords, []]
 
 export function reducer(state: State, action: Action): State
@@ -57,7 +61,7 @@ export function reducer(state: State, action: Action): State
         case Msg.UpdateWordSections:
             return {
                 ...state,
-                word_sections: payload as WordSectionsState
+                word_sections: payload as WordSectionGroupState
             }
         case Msg.GenerateWords:
             return {
