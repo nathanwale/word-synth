@@ -18,7 +18,8 @@ export type State = {
 
 export type WordSectionProps = {
     title: string,
-    state: State,
+    vowels: PhonemeSelection[],
+    consonants: PhonemeSelection[],
     updated_vowels: (phs: PhonemeSelection[]) => void
     updated_consonants: (phs: PhonemeSelection[]) => void
 }
@@ -35,11 +36,11 @@ export function WordSection(props: WordSectionProps)
             <header>{ props.title }</header>
             <PhonemePool 
                 title='Vowels' 
-                phoneme_selections={ props.state.vowels } 
+                phoneme_selections={ props.vowels } 
                 selected_phonemes_updater={ phs => props.updated_vowels(phs) } />
             <PhonemePool 
                 title='Consonants' 
-                phoneme_selections={ props.state.consonants } 
+                phoneme_selections={ props.consonants } 
                 selected_phonemes_updater={ phs => props.updated_consonants(phs) } />
         </div>
     )

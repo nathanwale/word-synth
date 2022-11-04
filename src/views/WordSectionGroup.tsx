@@ -27,17 +27,20 @@ export function WordSectionGroup()
         <div className='phonemes'>
             <WordSection 
                 title='Initial'
-                state={ state.initial }
+                vowels={ state.initial.vowels }
+                consonants={ state.initial.consonants }
                 updated_vowels={ phs => dispatch([Msg.UpdatedInitialVowels, phs]) }
                 updated_consonants={ phs => dispatch([Msg.UpdatedInitialConsonants, phs]) } />
             <WordSection 
                 title='Middle' 
-                state={ state.middle }
+                vowels={ state.middle.vowels }
+                consonants={ state.middle.consonants }
                 updated_vowels={ phs => dispatch([Msg.UpdatedMiddleVowels, phs]) }
                 updated_consonants={ phs => dispatch([Msg.UpdatedMiddleConsonants, phs]) } />
             <WordSection 
                 title='Final' 
-                state={ state.final }
+                vowels={ state.final.vowels }
+                consonants={ state.final.consonants }
                 updated_vowels={ phs => dispatch([Msg.UpdatedFinalVowels, phs]) }
                 updated_consonants={ phs => dispatch([Msg.UpdatedFinalConsonants, phs]) } />
         </div>
