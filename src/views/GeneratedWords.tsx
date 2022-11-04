@@ -1,4 +1,4 @@
-import React from 'react';
+import * as reducer from './reducer'
 import * as context from './context'
 
 type GeneratedWordsProps = {
@@ -30,7 +30,7 @@ export function GeneratedWords(props: GeneratedWordsProps)
 
     return (
         <div className='generated-words'>
-            <button onClick={ () => dispatch([context.Msg.GenerateWords, props.wordcount]) }>Regenerate</button>
+            <button onClick={ () => dispatch([reducer.Msg.GenerateWords, props.wordcount]) }>Regenerate</button>
             <WordList words={ words } />
         </div>
     )

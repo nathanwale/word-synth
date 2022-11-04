@@ -1,6 +1,6 @@
-import React from 'react';
 import { WordSection, State as WordSectionState } from './WordSection';
 import * as context from './context'
+import { Msg } from './reducer'
 
 export type State = {
     initial: WordSectionState,
@@ -63,18 +63,18 @@ export function WordSectionGroup(props: WordSectionGroupProps)
             <WordSection 
                 title='Initial'
                 state={ state.initial }
-                updated_vowels={ phs => dispatch([context.Msg.UpdatedInitialVowels, phs]) }
-                updated_consonants={ phs => dispatch([context.Msg.UpdatedInitialConsonants, phs]) } />
+                updated_vowels={ phs => dispatch([Msg.UpdatedInitialVowels, phs]) }
+                updated_consonants={ phs => dispatch([Msg.UpdatedInitialConsonants, phs]) } />
             <WordSection 
                 title='Middle' 
                 state={ state.middle }
-                updated_vowels={ phs => dispatch([context.Msg.UpdatedMiddleVowels, phs]) }
-                updated_consonants={ phs => dispatch([context.Msg.UpdatedMiddleConsonants, phs]) } />
+                updated_vowels={ phs => dispatch([Msg.UpdatedMiddleVowels, phs]) }
+                updated_consonants={ phs => dispatch([Msg.UpdatedMiddleConsonants, phs]) } />
             <WordSection 
                 title='Final' 
                 state={ state.final }
-                updated_vowels={ phs => dispatch([context.Msg.UpdatedFinalVowels, phs]) }
-                updated_consonants={ phs => dispatch([context.Msg.UpdatedFinalConsonants, phs]) } />
+                updated_vowels={ phs => dispatch([Msg.UpdatedFinalVowels, phs]) }
+                updated_consonants={ phs => dispatch([Msg.UpdatedFinalConsonants, phs]) } />
         </div>
     )
 }

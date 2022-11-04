@@ -6,9 +6,9 @@ import * as Generator from '../models/Generator'
 import { Template } from '../models/Template'
 import { PhonemeSelection, create_phoneme_selections, only_selected, selected_phonemes } from '../models/PhonemeSelection'
 import { State as WordSectionGroupState } from './WordSectionGroup'
+import { State as AppState } from './App'
 
-
-export function init_state(): context.State {
+export function init_state(): AppState {
     const generated_word_count = 50
     const simple_vowels = Random.take(Vowels.simple, 5)
     const complex_vowels = Random.take(Vowels.complex, 5)
