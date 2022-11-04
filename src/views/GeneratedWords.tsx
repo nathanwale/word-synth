@@ -2,13 +2,17 @@ import * as reducer from './reducer'
 import * as context from './context'
 
 
+/*
+** List of words view
+*/
+
 type WordListProps = {
     words: string[]
 }
 
-function WordList(props: WordListProps)
+function WordList({words}: WordListProps)
 {
-    const list = props.words.map((w, i) => <li key={w+'-'+i}> { w } </li>)
+    const list = words.map((w, i) => <li key={w+'-'+i}> { w } </li>)
     return (
         <ol>
             { list }
@@ -16,6 +20,10 @@ function WordList(props: WordListProps)
     )
 }
 
+
+/*
+** Generated words view
+*/
 export function GeneratedWords()
 {
     const {words, count} = context.useStateContext().generated_words
