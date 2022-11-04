@@ -55,7 +55,7 @@ export type LanguagePoolProps = {
 
 
 
-export function LanguagePool(props: LanguagePoolProps)
+export function LanguagePool()
 {
     // let [state, dispatch] = React.useReducer(reducer, props.state)
     let state = context.useStateContext().language_pool

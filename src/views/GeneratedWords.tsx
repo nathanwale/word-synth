@@ -2,7 +2,6 @@ import * as reducer from './reducer'
 import * as context from './context'
 
 type GeneratedWordsProps = {
-    words: string[]
     wordcount: number
 }
 

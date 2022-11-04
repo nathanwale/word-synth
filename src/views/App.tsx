@@ -164,12 +164,9 @@ function App()
                 <header className="nameplate">
                     WordSynth
                 </header>
-                <LanguagePool
-                    state={ state.language_pool } />
-                <WordSectionGroup
-                    state={ state.word_sections } />
+                <LanguagePool />
+                <WordSectionGroup />
                 <GeneratedWords 
-                    words={ state.generated_words }
                     wordcount={ 100 } />
             </div>
         </context.StateProvider>

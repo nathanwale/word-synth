@@ -44,7 +44,7 @@ export type WordSectionGroupProps = {
 
 
 
-export function WordSectionGroup(props: WordSectionGroupProps)
+export function WordSectionGroup()
 {
     // let [state, dispatch] = React.useReducer(reducer, {...props.state})
     let state = context.useStateContext().word_sections
