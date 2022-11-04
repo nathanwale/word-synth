@@ -1,4 +1,3 @@
-import * as Pattern from './Pattern'
 import { Phoneme } from './Phoneme'
 import * as Random from '../random'
 import { Voicing } from './Voicing'
