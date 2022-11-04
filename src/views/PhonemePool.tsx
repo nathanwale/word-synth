@@ -1,7 +1,11 @@
 import React from 'react'
 import { PhonemeSelector } from './PhonemeSelector'
 import { PhonemeSelection } from '../models/PhonemeSelection'
-import { Phoneme } from '../models/Phoneme'
+
+
+/*
+** Props
+*/
 
 export type PhonemePoolProps = {
     title: string,
@@ -14,6 +18,10 @@ type PhonemeButtonProps = {
     key: React.Key
 }
 
+/*
+** Individual buttons
+*/
+
 function PhonemeButton(props: PhonemeButtonProps)
 {
     return (
@@ -23,9 +31,7 @@ function PhonemeButton(props: PhonemeButtonProps)
 
 export function PhonemePool(props: PhonemePoolProps)
 {
-    // let [phoneme_selections, set_phoneme_selections] = React.useState(props.phoneme_selections)
-
-    let phoneme_selections = [...props.phoneme_selections]
+   let phoneme_selections = [...props.phoneme_selections]
     phoneme_selections.sort(
         (a, b) => {
             if (a.phoneme > b.phoneme) {
@@ -44,18 +50,6 @@ export function PhonemePool(props: PhonemePoolProps)
             label={phs.phoneme} 
             key={phs.phoneme+'-'+i} />
     })
-
-    // React.useEffect(() => {
-    //     set_phoneme_selections(props.phoneme_selections)
-    // }, [props.phoneme_selections])
-
-    // React.useEffect(() => {
-    //     props.selected_phonemes_updater(phoneme_selections)
-    // }, [phoneme_selections])
-
-    // function update_phoneme_selection(phoneme_selections: PhonemeSelection[]) {
-    //     set_phoneme_selections(phoneme_selections)
-    // }
 
     return (
         <div className='phoneme-pool'>
