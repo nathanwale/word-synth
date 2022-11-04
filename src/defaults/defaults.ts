@@ -1,0 +1,1 @@
+export const generated_word_count = 100
