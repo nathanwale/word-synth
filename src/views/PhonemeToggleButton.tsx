@@ -9,20 +9,22 @@ type Props = {
 
 export function PhonemeToggleButton(props: Props)
 {
-    let [selected, set_selected] = React.useState(props.selected)
-    let class_name = `phoneme-toggle ${ selected ? 'selected' : 'unselected'}`
+    const selection_updater = props.selection_updater
+    const phoneme = props.phoneme
+    const [selected, set_selected] = React.useState(props.selected)
+    const class_name = `phoneme-toggle ${ selected ? 'selected' : 'unselected'}`
 
     function toggle_selected() {
         set_selected(!selected)
     }
 
     React.useEffect(() => {
-        props.selection_updater(props.phoneme, selected)
-    }, [selected])
+        selection_updater(phoneme, selected)
+    }, [selected, phoneme, selection_updater])
 
     return (
         <button className={ class_name } onClick={ toggle_selected }>
-            { props.phoneme }
+            { phoneme }
         </button>
     )
 }
