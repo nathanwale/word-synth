@@ -4,6 +4,10 @@ import { PhonemeToggleButton } from './PhonemeToggleButton';
 import { PhonemeSelection } from '../models/PhonemeSelection';
 
 
+/*
+** Props
+*/
+
 export type PhonemeSelectorProps = {
     title: string,
     count: number,
@@ -11,22 +15,14 @@ export type PhonemeSelectorProps = {
     selected_phonemes_updater: (phs: PhonemeSelection[]) => void
 }
 
+
+/*
+** View
+*/
+
 export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
 {
-    // const [phoneme_selections, set_phoneme_selections] = React.useState(props.phoneme_selections)
     const [displayed, set_displayed] = React.useState(false)
-
-    // function update_selected_phoneme(phoneme: Phoneme, selected: boolean) {
-        
-    // }
-
-    // React.useEffect(() => {
-    //     set_phoneme_selections(props.phoneme_selections)
-    // }, [props.phoneme_selections])
-
-    // React.useEffect(() => {
-    //     props.selected_phonemes_updater(phoneme_selections)
-    // }, [phoneme_selections])
 
     function updater(phoneme: Phoneme, selected: boolean) {
         let new_list = props.phoneme_selections.map(phs => {
