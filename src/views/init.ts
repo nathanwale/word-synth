@@ -4,11 +4,10 @@ import * as Consonants from '../defaults/consonants'
 import * as Generator from '../models/Generator'
 import { Template } from '../models/Template'
 import { PhonemeSelection, create_phoneme_selections, only_selected, selected_phonemes } from '../models/PhonemeSelection'
-import { State as WordSectionGroupState } from './WordSectionGroup'
-import { State as AppState } from './App'
+import * as state from './state'
 import * as defaults from '../defaults/defaults'
 
-export function init_state(): AppState {
+export function init_state(): state.App {
     const simple_vowels = Random.take(Vowels.simple, 5)
     const complex_vowels = Random.take(Vowels.complex, 5)
 
@@ -58,7 +57,7 @@ export function combine_phonemes(a: PhonemeSelection[], b: PhonemeSelection[]): 
     return [...only_selected(a), ...only_selected(b)]
 }
 
-export function new_words(word_sections: WordSectionGroupState, wordcount: number): string[] {
+export function new_words(word_sections: state.WordSectionGroup, wordcount: number): string[] {
     const temp_init: Template = {
         min: 1,
         max: 1,

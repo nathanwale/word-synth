@@ -1,21 +1,10 @@
-import { WordSection, State as WordSectionState } from './WordSection';
+import { WordSection } from './WordSection';
 import * as context from './context'
 import { Msg } from './reducer'
 
 
 /*
-** State
-*/
-
-export type State = {
-    initial: WordSectionState,
-    middle: WordSectionState,
-    final: WordSectionState,
-}
-
-
-/*
-** View
+** Word Section Group View
 */
 
 export function WordSectionGroup()

@@ -1,15 +1,5 @@
-import React from 'react';
 import { PhonemePool } from './PhonemePool';
 import { PhonemeSelection } from '../models/PhonemeSelection'
-
-/*
-** State
-*/
-
-export type State = {
-    vowels: PhonemeSelection[],
-    consonants: PhonemeSelection[],
-}
 
 
 /*
@@ -26,7 +16,7 @@ export type WordSectionProps = {
 
 
 /*
-** View
+** Word Section View
 */
 
 export function WordSection(props: WordSectionProps)

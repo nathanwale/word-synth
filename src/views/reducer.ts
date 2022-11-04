@@ -1,6 +1,4 @@
-import { State as LanguagePoolState } from './LanguagePool'
-import { State as WordSectionGroupState } from './WordSectionGroup'
-import { State as AppState } from './App'
+import * as state from './state'
 import { PhonemeSelection } from '../models/PhonemeSelection'
 import * as init from './init'
 
@@ -47,7 +45,7 @@ export type Action =
 ** Reducer
 */
 
-export function reducer(new_state: AppState, action: Action): AppState
+export function reducer(new_state: state.App, action: Action): state.App
 {
     const [msg, payload]: [Msg, PhonemeSelection[] | number] = action
     let state = {...new_state}
@@ -101,9 +99,9 @@ export function reducer(new_state: AppState, action: Action): AppState
 */
 
 function word_section_updater(
-    old_state: WordSectionGroupState, phoneme_selections: PhonemeSelection[], 
-    lang_pool: LanguagePoolState,
-    voicing: "vowels" | "consonants", complexity: "simple" | "complex"): WordSectionGroupState
+    old_state: state.WordSectionGroup, phoneme_selections: PhonemeSelection[], 
+    lang_pool: state.LanguagePool,
+    voicing: "vowels" | "consonants", complexity: "simple" | "complex"): state.WordSectionGroup
 {
     const other_complexity = complexity === "complex" ? "simple" : "complex"
     const state = {...old_state}

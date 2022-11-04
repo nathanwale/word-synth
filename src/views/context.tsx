@@ -2,13 +2,13 @@ import React, { PropsWithChildren } from 'react'
 import { Action } from './reducer'
 import * as init from './init'
 import { reducer } from './reducer'
-import { State } from './App'
+import * as state from './state'
 
 
 /*
 ** State and Dispatch context consts
 */
-export const StateContext = React.createContext<State | null>(null)
+export const StateContext = React.createContext<state.App | null>(null)
 export const DispatchContext = React.createContext<React.Dispatch<Action> | null>(null)
 
 export const StateProvider: React.FC<PropsWithChildren> = ({ children }) => {
@@ -26,7 +26,7 @@ export const StateProvider: React.FC<PropsWithChildren> = ({ children }) => {
     )
 }
 
-export function useStateContext(): State {
+export function useStateContext(): state.App {
     return React.useContext(StateContext)!
 }
 

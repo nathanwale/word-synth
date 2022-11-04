@@ -1,26 +1,10 @@
 import { PhonemePool } from './PhonemePool';
-import { PhonemeSelection } from '../models/PhonemeSelection'
 import * as context from './context'
 import { Msg } from './reducer'
 
-/*
-** State
-*/
-
-export type State = {
-    vowels: {
-        simple: PhonemeSelection[],
-        complex: PhonemeSelection[],
-    },
-    consonants: {
-        simple: PhonemeSelection[],
-        complex: PhonemeSelection[],
-    },
-}
-
 
 /*
-** View
+** Language Pool View
 */
 
 export function LanguagePool()
