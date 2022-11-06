@@ -20,7 +20,8 @@ export function PhonemeToggleButton(props: Props)
 
     React.useEffect(() => {
         selection_updater(phoneme, selected)
-    }, [selected, phoneme, selection_updater])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selected, phoneme])
 
     return (
         <button className={ class_name } onClick={ toggle_selected }>
