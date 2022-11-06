@@ -1,7 +1,7 @@
-import React from 'react';
 import { Phoneme } from '../models/Phoneme';
 import { PhonemeToggleButton } from './PhonemeToggleButton';
 import { PhonemeSelection } from '../models/PhonemeSelection';
+import { usePopup } from './hooks'; 
 
 
 /*
@@ -22,7 +22,8 @@ export type PhonemeSelectorProps = {
 
 export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
 {
-    const [displayed, set_displayed] = React.useState(false)
+    const [overlay_ref, displayed, set_displayed] = usePopup(false)
+    // const [displayed, set_displayed] = React.useState(false)
 
     function updater(phoneme: Phoneme, selected: boolean) {
         let new_list = props.phoneme_selections.map(phs => {
@@ -41,11 +42,11 @@ export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
         set_displayed(false)
     }
 
-    function toggle_display() {
-        set_displayed(d => !d) 
+    function open_display() {
+        set_displayed(true)
     }
 
-    let selector_buttons = <></>
+    let container
 
     if (displayed) {
         let phoneme_toggles = props.phoneme_selections.map(
@@ -56,23 +57,31 @@ export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
                     selected={ ph_selection.selected }
                     selection_updater={ updater } />
         )
-        selector_buttons = (
-            <div className='phoneme-selector'>
-                <header>{ props.title }</header>
-                { phoneme_toggles }
-                <button onClick={ close_display }>done</button>
+        container = (
+            <div>
+                <div ref={ overlay_ref }>
+                <button 
+                    className='toggle-display opened'
+                    onClick={ close_display }>
+                    select
+                </button>
+                </div>
+                <div className='phoneme-selector' ref={ overlay_ref }>
+                    <header>{ props.title }</header>
+                    { phoneme_toggles }
+                    <button onClick={ close_display }>done</button>
+                </div>
             </div>
         )
-    }
-    
-    return (
-        <div>
+    } else {
+        container = <div>
             <button 
-                className='toggle-display'
-                onClick={ toggle_display }>
+                className='toggle-display closed'
+                onClick={ open_display }>
                 select
             </button>
-            { selector_buttons }
         </div>
-    )
+    }
+    
+    return container
 }
