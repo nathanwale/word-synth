@@ -33,21 +33,38 @@ div.language-pool {
             padding: 0;
             margin: 0;
         }
+    }
+}
 
-        button.toggle-display {
-            background-color: #eee;
-            border: 1px solid #666;
-            border-radius: 0.5em;
-            color: #333;
-            font-weight: bolder;
-            font-size: 0.8em;
-        }
+button.toggle-display {
+    background-color: #aaa;
+    border: none;
+    border-radius: 0.25em;
+    padding: 0.1em 1em;
+    color: #333;
+    font-weight: bolder;
+    font-size: 0.8em;
+    text-align: center;
+
+    &.closed::after {
+        content: " ▼";
+    }
+
+    &.opened::after {
+        content: " ▲";
+    }
+
+    &.opened {
+        background-color: #333;
+        color: white;
+        border-radius: 0.25em 0.25em 0 0;
     }
 }
 
 div.phoneme-selector {
     border: 2px solid #333;
     border-radius: 0.5em;
+    margin-left: -2em;
     background-color: #fff;
     padding: 1em;
     position: absolute;
@@ -70,6 +87,8 @@ div.phoneme-selector {
         max-width: 40em;
     }
 }
+
+
 
 div.phonemes {
     width: 100%;
