@@ -23,7 +23,7 @@ export type PhonemeSelectorProps = {
 export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
 {
     const [overlay_ref, displayed, set_displayed] = usePopup(false)
-    // const [displayed, set_displayed] = React.useState(false)
+    const size_style = (props.phoneme_selections.length > 50 ? "large" : "small")
 
     function updater(phoneme: Phoneme, selected: boolean) {
         let new_list = props.phoneme_selections.map(phs => {
@@ -66,7 +66,7 @@ export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
                     select
                 </button>
                 </div>
-                <div className='phoneme-selector' ref={ overlay_ref }>
+                <div className={ `phoneme-selector ${size_style}` } ref={ overlay_ref }>
                     <header>{ props.title }</header>
                     { phoneme_toggles }
                     <button onClick={ close_display }>done</button>

@@ -65,6 +65,10 @@ div.phoneme-selector {
         border-color: rgb(17, 106, 42);
         color: white;
     }
+
+    &.large {
+        max-width: 40em;
+    }
 }
 
 div.phonemes {
