@@ -69,7 +69,6 @@ export function PhonemeSelector(props: PhonemeSelectorProps): JSX.Element
                 <div className={ `phoneme-selector ${size_style}` } ref={ overlay_ref }>
                     <header>{ props.title }</header>
                     { phoneme_toggles }
-                    <button onClick={ close_display }>done</button>
                 </div>
             </div>
         )
