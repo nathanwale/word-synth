@@ -41,7 +41,7 @@ button.toggle-display {
     border: none;
     border-radius: 0.25em;
     padding: 0.1em 1em;
-    color: #333;
+    color: #111;
     font-weight: bolder;
     font-size: 0.8em;
     text-align: center;
@@ -152,6 +152,7 @@ div.phonemes {
 }
 
 .generated-words {
+    padding-top: 2em;
     text-align: center;
     li {
         list-style: none;
