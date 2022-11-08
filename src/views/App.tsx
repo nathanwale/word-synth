@@ -3,6 +3,7 @@ import { GeneratedWords } from './GeneratedWords';
 import './style/App.scss';
 import { LanguagePool } from './LanguagePool'
 import { WordSectionGroup } from './WordSectionGroup'
+import { Usage } from './Usage'
 import * as context from './context'
 
 
@@ -16,7 +17,10 @@ function App()
         <context.StateProvider>
             <div className="App">
                 <header className="nameplate">
-                    WordSynth
+                    <h1>
+                        WordSynth
+                    </h1>
+                    <Usage />
                 </header>
                 <LanguagePool />
                 <WordSectionGroup />
