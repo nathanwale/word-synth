@@ -13,6 +13,7 @@ import * as context from './context'
 
 function App() 
 {
+    document.title = "WordSynth - by Nathan Wale"
     return (
         <context.StateProvider>
             <div className="App">
