@@ -5,7 +5,7 @@ import React from 'react'
 **     takes `initial_visibillity`: `true` or `false` specifies whether popup is shown by default
 */
 export function usePopup(initial_visibility: boolean): 
-    [React.RefObject<HTMLDivElement>,
+    [React.RefObject<HTMLDivElement | null>,
      boolean, 
      (b: boolean) => void]
 {
