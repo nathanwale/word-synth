@@ -2,6 +2,7 @@ import { Phoneme } from '../models/Phoneme';
 import { PhonemeToggleButton } from './PhonemeToggleButton';
 import { PhonemeSelection } from '../models/PhonemeSelection';
 import { usePopup } from './hooks'; 
+import { JSX } from 'react/jsx-runtime';
 
 
 /*
